@@ -20,11 +20,12 @@ class ImperialDate:
     def __init__(self, d=None, date_class=0):
         self._date = None
         self._date_class = None
-        self.regular_date = d
         self.date_class = date_class
-        self.imperial_date = None
-        if d is not None:
-            self._calculate_date()
+
+        if d is None:
+            self.regular_date = date.today()
+        else:
+            self.regular_date = d
 
     @staticmethod
     def _check_date(d):
@@ -61,8 +62,12 @@ class ImperialDate:
 
         return (day_number / days_this_year) * 1000
 
-    def _calculate_date(self):
-        self.imperial_date = (
+    @property
+    def imperial_date(self):
+        if date is None:
+            return None
+
+        return (
             self.date_class,
             self._get_year_fraction(),
             self._get_millennium_part()
@@ -76,7 +81,6 @@ class ImperialDate:
     def regular_date(self, d):
         self._check_date(d)
         self._date = d
-        self._calculate_date()
 
     @property
     def date_class(self):
@@ -84,9 +88,10 @@ class ImperialDate:
 
     @date_class.setter
     def date_class(self, date_class):
-        if ImperialDate.MIN_DATE_CLASS <= date_class <= ImperialDate.MAX_DATE_CLASS:
+        if (isinstance(date_class, int) and
+                ImperialDate.MIN_DATE_CLASS <=
+                date_class <= ImperialDate.MAX_DATE_CLASS):
             self._date_class = date_class
-            self._calculate_date()
         else:
             raise ValueError(
                 'Date class must be between {} and {}, was {}'.format(
