@@ -27,11 +27,6 @@ class ImperialDate:
         else:
             self.regular_date = d
 
-    @staticmethod
-    def _check_date(d):
-        if not isinstance(d, date):
-            raise ValueError('Argument must of type datetime.date')
-
     def _get_millennium_part(self):
         """Construct the millennium part for the date.
 
@@ -48,7 +43,7 @@ class ImperialDate:
         return '{}.M{}'.format(year[-3:], int(year[:-3])+1)
 
     def _get_year_fraction(self):
-        """Calculate the current "position" in this year.
+        """Calculate the current "position" in the date's year.
 
         The number calculated is a number between 0 and 1
         which represents the "position" of the date's day
@@ -57,10 +52,10 @@ class ImperialDate:
         We multiply that value by 1000 because we need a number
         between 0 and 1000 for the canonical WH40k date.
         """
-        days_this_year = int(date(self._date.year, 12, 31).strftime('%j'))
+        days_that_year = int(date(self._date.year, 12, 31).strftime('%j'))
         day_number = int(self._date.strftime('%j'))
 
-        return (day_number / days_this_year) * 1000
+        return (day_number / days_that_year) * 1000
 
     @property
     def imperial_date(self):
@@ -79,11 +74,16 @@ class ImperialDate:
 
     @regular_date.setter
     def regular_date(self, d):
-        self._check_date(d)
+        if not isinstance(d, date):
+            raise ValueError('Argument must of type datetime.date')
         self._date = d
 
     @property
     def date_class(self):
+        """
+        'date_class' has nothing to do with datetime.date but
+        is WH40k terminology, see wiki.
+        """
         return self._date_class
 
     @date_class.setter
