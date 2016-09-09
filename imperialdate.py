@@ -94,7 +94,8 @@ class ImperialDate:
             self._date_class = date_class
         else:
             raise ValueError(
-                'Date class must be between {} and {}, was {}'.format(
+                'Date class must be an integer and '
+                'between {} and {}, was {}'.format(
                     ImperialDate.MIN_DATE_CLASS,
                     ImperialDate.MAX_DATE_CLASS,
                     date_class
