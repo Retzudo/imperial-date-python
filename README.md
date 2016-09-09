@@ -14,7 +14,7 @@ from imperialdate import ImperialDate
 imperial_date = ImperialDate()
 
 # You can also pass date objects
-imperial_date = ImperialDate(date('2016-01-02'))
+imperial_date = ImperialDate(date(2016, 1, 2))
 
 # You can also pass a date class (see WH40k wiki entry)
 imperial_date = ImperialDate(date_class=9)
