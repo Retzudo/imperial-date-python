@@ -13,14 +13,14 @@ from imperialdate import ImperialDate
 # Create an Imperial Date for today
 imperial_date = ImperialDate()
 
-# You can also pass date objects
+# You can pass date objects
 imperial_date = ImperialDate(date(2016, 1, 2))
 
-# You can also pass a date class (see WH40k wiki entry)
+# You can specify a date class (see WH40k wiki entry)
 imperial_date = ImperialDate(date_class=9)
 imperial_date = ImperialDate(date(2016, 1, 2), date_class=9)
 
-# The class implements __str__ so you can do
+# The class implements __str__
 print("By the Emperor's grace it is {}".format(imperial_date))
 
 # The imperial_date property cotains a tuple of the individual components
@@ -30,11 +30,11 @@ date_class, year_fraction, millennium = imperial_date.imperial_date
 if ImperialDate(date(2016, 1, 1)) < ImperialDate(date(2016, 1, 2)):
   print('It works!')
 
-# The regular date is still stored in the instance and can be replaced
+# The regular date is still stored in the instance and can be replaced anytime
 regular_date = imperial_date.regular_date
 imperial_date.regular_date = date(2017, 12, 31)
 
-# As well as the date class
+# The date class too
 date_class = imperial_date.date_class
 imperial_date.date_class = 0
 ```
