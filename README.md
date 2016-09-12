@@ -28,7 +28,7 @@ date_class, year_fraction, millennium = imperial_date.imperial_date
 
 # You can also compare dates
 if ImperialDate(date(2016, 1, 1)) < ImperialDate(date(2016, 1, 2)):
-  print('It works!')
+  print('The flow of time is still in order.')
 
 # The regular date is still stored in the instance and can be replaced anytime
 regular_date = imperial_date.regular_date
