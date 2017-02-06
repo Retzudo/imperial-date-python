@@ -8,6 +8,6 @@ setup(
     url='https://github.com/Retzudo/imperial-date-python',
     author='Retzudo',
     license='GPLv3',
-    packages=['imperialdate'],
+    packages=['imperialdate.py'],
     zip_safe=False,
 )
