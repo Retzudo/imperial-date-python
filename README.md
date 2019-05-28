@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/Retzudo/imperial-date-python.svg?branch=master)](https://travis-ci.org/Retzudo/imperial-date-python)
 
-This is a class somewhat implements the [Imperial Dating System](http://warhammer40k.wikia.com/wiki/Imperial_Dating_System).
+This class somewhat implements the [Imperial Dating System](http://warhammer40k.wikia.com/wiki/Imperial_Dating_System).
 It's only able to handle dates and completely ignores time.
 
 
